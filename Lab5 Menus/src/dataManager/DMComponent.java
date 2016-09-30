@@ -18,12 +18,12 @@ import menuClasses.Menu;
 public class DMComponent {
 	private Stack<Menu> mStack;          // stack to manage actions in this system
 	private ArrayList<NamedList> lol;    // list of lists of Integers
-	
+
 	public DMComponent() { 
 		lol = new ArrayList<NamedList>(); 
 		mStack = new Stack<Menu>(); 
 	} 
-	
+
 	/**
 	 * Adds a new list to the system
 	 * @param name the name of the list
@@ -37,7 +37,7 @@ public class DMComponent {
 			lol.add(nlist); 
 		}
 	}
-	
+
 	/**
 	 * Adds a new element to a particular list.
 	 * @param name the name of the list
@@ -52,7 +52,7 @@ public class DMComponent {
 		}
 
 	}
-	
+
 	/**
 	 * Removes element from a particular list. 
 	 * @param name the name of the list
@@ -64,22 +64,15 @@ public class DMComponent {
 			IOComponent.getComponent().output("No such list, " + name + ", exists.\n"); 
 		else { 
 			try { 
-			   lol.get(index).remove(posIndex); 
+				lol.get(index).remove(posIndex); 
 			} catch (IndexOutOfBoundsException e) { 
 				IOComponent.getComponent().output("Invalid index = " + posIndex +
 						" for list " + name + ".\n"); 
 			}
 		}
 	}
-	
-	/**
-	 * Removes a list.
-	 */
-	public void removeList(String name)
-	{
-		
-	}
-	
+
+
 	/**
 	 * Displays the names of all current lists in the system.
 	 */
@@ -92,11 +85,11 @@ public class DMComponent {
 			for (NamedList e : lol) {
 				outS += e.getName() + "\n";; 
 			}
-		
+
 		IOComponent.getComponent().output(outS + "\n"); 
-	
+
 	}
-	
+
 	/**
 	 * Displays all the elements in a particular list. 
 	 * @param name the name of the list to be displayed.
@@ -116,9 +109,9 @@ public class DMComponent {
 		} else { 
 			IOComponent.getComponent().output("\nSelected list is empty."); 
 		}
-		
+
 	}
-	
+
 	/**
 	 * Displays the average of numbers in a particular list. 
 	 * @param name the name of the list.
@@ -134,14 +127,14 @@ public class DMComponent {
 				sum += e;  
 			}
 			IOComponent.getComponent().output(outS + "\nAverage is: "
-			            + sum/lol.get(index).size() + "\n"); 
-			
+					+ sum/lol.get(index).size() + "\n"); 
+
 		} else { 
 			IOComponent.getComponent().output("\nSelected list is empty."); 
 		}
-	
+
 	}
-	
+
 	/**
 	 * Displays the sum of all elements in a particular list. 
 	 * @param name the name of the list.
@@ -157,14 +150,14 @@ public class DMComponent {
 				sum += e;  
 			}
 			IOComponent.getComponent().output(outS + "\nSum is: "
-			            + sum + "\n"); 
-			
+					+ sum + "\n"); 
+
 		} else { 
 			IOComponent.getComponent().output("\nSelected list is empty."); 
 		}
-	
+
 	}
-	
+
 	/**
 	 * Displays the maximum value in a given list. 
 	 * @param name the name of the list.
@@ -181,14 +174,14 @@ public class DMComponent {
 					maxVal = e; 
 			}
 			IOComponent.getComponent().output(outS + "\nMax Value is: "
-			            + maxVal + "\n"); 
-			
+					+ maxVal + "\n"); 
+
 		} else { 
 			IOComponent.getComponent().output("\nSelected list is empty."); 
 		}
-	
+
 	}
-	
+
 	/**
 	 * Internal private auxiliary method. Gets the index identifying 
 	 * a particular list in the system. 
@@ -201,10 +194,10 @@ public class DMComponent {
 		for (int i=0; i<lol.size(); i++) 
 			if (name.equals(lol.get(i).getName())) 
 				return i; 
-		
+
 		return -1; 
 	}
-	
+
 	/**
 	 * Returns reference to the stack object used to manage different
 	 * states of the system. 
@@ -213,7 +206,7 @@ public class DMComponent {
 	public Stack<Menu> getMenuStack() { 
 		return mStack; 
 	}
-		
+
 	/**
 	 * Inner class defining a NamedList object type. 
 	 * @author pedroirivera-vega
@@ -227,6 +220,20 @@ public class DMComponent {
 		}
 		public String getName() { 
 			return name; 
+		}
+	}
+
+	/**
+	 * Deletes a list from the System.
+	 * @param listName The name of the list.
+	 */
+	public void deleteList(String listName) {
+		int index = getIndexForList(listName); 
+		if (index == -1) 
+			IOComponent.getComponent().output("No such list, " + listName + ", exists.\n"); 
+		else { 
+			lol.remove(index);
+			IOComponent.getComponent().output("List Deleted\n"); 
 		}
 	}
 }

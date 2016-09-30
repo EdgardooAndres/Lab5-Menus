@@ -13,7 +13,7 @@ public class MainMenu extends Menu {
 		options.add(new Option("Create New List", new CreateListAction())); 
 		options.add(new Option("Delete an Existing List", new DeleteListAction()));
 		options.add(new Option("Operations on Lists", new OperateListAction())); 
-		options.add(new Option("Alter Content of a List", new OperateListAction())); 
+		options.add(new Option("Alter Content of a List", new AlterListAction())); 
 		options.add(Option.EXIT); 
 
 		super.InitializeMenu(title, options);
