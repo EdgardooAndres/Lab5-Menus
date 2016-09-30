@@ -73,6 +73,14 @@ public class DMComponent {
 	}
 	
 	/**
+	 * Removes a list.
+	 */
+	public void removeList(String name)
+	{
+		
+	}
+	
+	/**
 	 * Displays the names of all current lists in the system.
 	 */
 	public void showListsNames() {
